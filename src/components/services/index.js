@@ -4,9 +4,9 @@ import './style.css';
 
 import Nav from '../nav';
 import Footer from '../footer';
-import FadingRow from '../fading-row';
-import Header1 from '../header-1';
-import Article from '../article';
+import FadingRow from '../primitives/fading-row';
+import Header1 from '../primitives/header-1';
+import Article from '../primitives/article';
 
 export default function Services() {
   return (

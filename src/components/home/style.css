@@ -1,0 +1,13 @@
+.Home-Img {
+  border: 1px solid;
+  border-radius: 88px;
+  float: right;
+  margin: 0 0 10px 10px;
+  width: 175px;
+}
+
+.Home-DateRange {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: bold;
+}

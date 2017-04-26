@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-const Article = props => <article className="Article">{props.children}</article>
+const Anchor = props => <a {...props} className="Anchor">{props.children}</a>
 
-Article.propTypes = {
+Anchor.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Article;
+export default Anchor;

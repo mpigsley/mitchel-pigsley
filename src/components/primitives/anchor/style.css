@@ -1,0 +1,16 @@
+.Anchor {
+  transition: border-bottom linear .2s;
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.Anchor:hover {
+  color: #0FA0CE;
+  outline: 0;
+}
+
+.Anchor:focus {
+  outline: 0;
+}
