@@ -11,3 +11,62 @@
   font-style: italic;
   font-weight: bold;
 }
+
+.Home-Header {
+  position: relative;
+  height: 100vh;
+  text-align: center;
+}
+
+.Home-MainHeader {
+  font-weight: 300;
+  font-size: 150px;
+  position: relative;
+  top: 25%;
+  font-variant: small-caps;
+}
+
+.Home-HeaderContent {
+  position: relative;
+  top: 25%;
+  font-variant: small-caps;
+  font-size: 18px;
+}
+
+.Home-RowCutoff {
+  background: linear-gradient(to right, transparent 10%, rgba(0,0,0,0.65) 50%, transparent 90%);
+  margin: auto;
+  height: 1px;
+  width: 50%;
+  border: 0;
+  position: relative;
+  top: 25%;
+}
+
+.Home-NavPlaceholder,
+.Home-Nav {
+  transition: border-color linear .75s;
+  border-bottom: 1px solid #000;
+  background-color: #FFF;
+  position: absolute;
+  padding: 20px 0;
+  z-index: 10;
+  bottom: 0;
+}
+
+.Home-Nav {
+  text-align: center;
+  width: 100%;
+}
+
+.Home-NavLink {
+  transition: all .2s ease;
+  border-bottom: 1px solid transparent;
+  font-variant: small-caps;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 10px;
+  padding: 5px;
+  color: #000;
+}

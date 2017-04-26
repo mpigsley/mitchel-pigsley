@@ -14,6 +14,20 @@ import LinkDialog from '../primitives/link-dialog';
 export default function Home() {
   return (
     <div>
+      <header className="Home-Header" id="home">
+        <h1 className="Home-MainHeader">MP</h1>
+        <p className="Home-HeaderContent">Software Developer&nbsp;&nbsp;·&nbsp;&nbsp;Electrical &amp; Computer Engineer&nbsp;&nbsp;·&nbsp;&nbsp;Music Producer</p>
+        <hr className="Home-RowCutoff" />
+        <div className="Home-NavPlaceholder" style={{ height: 0 }}></div>
+        <nav className="Home-Nav">
+          <a className="Home-NavLink" href="#home">Home</a>
+          <a className="Home-NavLink" href="#about">About</a>
+          <a className="Home-NavLink" href="#experience">Experience</a>
+          <a className="Home-NavLink" href="#logicalmitch">Logical Mitch</a>
+          <a className="Home-NavLink" href="/services">Services</a>
+        </nav>
+      </header>
+
       <div className="container">
         <section id="about">
           <div className="row">
