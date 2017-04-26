@@ -1,0 +1,25 @@
+.Header {
+  text-align: center;
+  width: 100%;
+}
+
+.Header-Nav {
+  transition: border-color linear .75s;
+  border-bottom: 1px solid #000;
+  background-color: #FFF;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.Header-Link {
+  transition: all .2s ease;
+  border-bottom: 1px solid transparent;
+  font-variant: small-caps;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 10px;
+  padding: 5px;
+  color: #000;
+}

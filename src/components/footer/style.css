@@ -1,0 +1,15 @@
+.Footer {
+  text-align: center;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.Footer-Icon {
+  color: black;
+  margin: 0 1rem;
+  transition: all .2s ease;
+}
+
+.Footer-Icon:hover {
+  color: #33C3F0;
+}
