@@ -59,6 +59,13 @@
   width: 100%;
 }
 
+.Home-Nav--fixed {
+  border-color: #000;
+  bottom: initial;
+  position: fixed;
+  top: 0;
+}
+
 .Home-NavLink {
   transition: all .2s ease;
   border-bottom: 1px solid transparent;
