@@ -13,9 +13,16 @@ import Article from '../primitives/article';
 import Anchor from '../primitives/anchor';
 import LinkDialog from '../primitives/link-dialog';
 
+const youtubeBaseUrl = 'https://www.googleapis.com/youtube/v3/';
+const key = 'AIzaSyAKjLUQ10gab70TscjYiTUPWMYtehHzgGA';
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      videos: [],
+    };
 
     this.stickyNav = this.stickyNav.bind(this);
   }
@@ -25,6 +32,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    this.getChannelDetails();
     document.addEventListener('scroll', this.stickyNav);
   }
 
@@ -43,6 +51,37 @@ export default class Home extends Component {
       this.setState({ fixedNav: false });
     }
   }
+
+  getChannelDetails() {
+    $.get(`${youtubeBaseUrl}channels?part=contentDetails&forUsername=mpigsley77&key=${key}`, (response) => {
+      let uploadsId;
+      try {
+        uploadsId = response.items[0].contentDetails.relatedPlaylists.uploads;
+      } catch (err) {
+        console.error(err);
+      }
+
+      if (uploadsId) {
+        $.get(`${youtubeBaseUrl}playlistItems?part=snippet&maxResults=5&playlistId=${uploadsId}&key=${key}`, ({ items }) => {
+          this.setState({
+            videos: items
+              .map(({ snippet }) => snippet)
+              .map(({ description, title, resourceId }) => ({
+                url: `https://www.youtube.com/watch?v=${resourceId.videoId}`,
+                description: description.split('\n')[0],
+                title,
+              })),
+            });
+          });
+        }
+    });
+  }
+
+  renderRecentVideos() {
+    return this.state.videos.map(({ title, description, url }) => (
+      <LinkDialog key={title} linkText={title}>{description}</LinkDialog>
+    ));
+  }
   
   render() {
     return (
@@ -59,7 +98,7 @@ export default class Home extends Component {
           >
             <a className="Home-NavLink" href="#home">Home</a>
             <a className="Home-NavLink" href="#about">About</a>
-            <a className="Home-NavLink" href="#experience">Experience</a>
+            <a className="Home-NavLink" href="#resume">Resume</a>
             <a className="Home-NavLink" href="#logicalmitch">Logical Mitch</a>
             <a className="Home-NavLink" href="/services">Services</a>
           </nav>
@@ -92,10 +131,10 @@ export default class Home extends Component {
             <FadingRow topMargin />
           </section>
 
-          <section id="experience">
+          <section id="resume">
             <div className="row">
               <Article className="ten columns offset-by-one">
-                <Header1>Experience</Header1>
+                <Header1>Resume</Header1>
                 <LinkDialog href="https://ourlifeloop.com/" linkText="Lead Software Developer - Lifeloop">
                   <p className="Home-DateRange">Jan 2017 - Present</p>
                   <p>Work with a small agile team to build tools to help manage senior living communities, connect families with their loved ones, and track and report on individuals.</p>
@@ -145,7 +184,7 @@ export default class Home extends Component {
                 <p>
                   Want to keep up to date? These links auto-update as new videos are released.
                 </p>
-                <div id="latest_videos"></div>
+                {this.renderRecentVideos()}
               </Article>
               <Article className="six columns">
                   <Header2>Playlists</Header2>
