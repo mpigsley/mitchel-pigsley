@@ -113,13 +113,19 @@ export default class Home extends Component {
                 <p>Hi there, I'm Mitchel Pigsley</p>
                 <p>I spend my days as a software developer for senior living community platform called <Anchor href="https://ourlifeloop.com/">Lifeloop</Anchor> based out of Omaha, Nebraska where I primarily develop using Node.js, Express.js, React, and Redux. My evenings and weekends I spend as a freelance web developer and amateur audio engineer.</p>
                 <p>I offer a freelance web development service where I focus on giving a custom experience that matches the needs of the client. If you are interested in inquiring about these services, send me a message at <Anchor href="mailto:mpigsley@gmail.com" target="_top">mpigsley@gmail.com</Anchor> or see the <Anchor href="/services">services page</Anchor> to make an online inquiry.</p>
-              </Article>
-              <Article className="five columns">
                 <Header2>Skills</Header2>
                 <p>
                   Node.js | Express.js | React | Redux | Reflux | Webpack | Backbone.js | Marionette.js | C# | .NET | Ruby | Rails | Java | C
                 </p>
+              </Article>
+              <Article className="five columns">
                 <Header2>Recent Work</Header2>
+                <LinkDialog href="https://sectorswithoutnumber.com/" linkText="Sectors Without Number">
+                  A seeded, random, revised edition compliant, stars without number sector generator
+                </LinkDialog>
+                <LinkDialog href="https://reneepigsley.com/" linkText="Renee Pigsley">
+                  Clinical Mental Health Counseling Personal Website
+                </LinkDialog>
                 <LinkDialog href="http://www.besweetomaha.com" linkText="Be Sweet Bakery">
                   Be Sweet Bakery in Omaha Nebraska serving custom cheesecakes, cupcakes, cookies, and much more.
                 </LinkDialog>
