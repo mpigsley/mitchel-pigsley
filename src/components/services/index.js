@@ -20,7 +20,7 @@ export default function Services() {
             <p>
               Complete the form below to get in touch regarding your project. Alternatively, you can email me directly at <i>mpigsley@gmail.com</i>.
             </p>
-            <form action="http://formspree.io/mpigsley@gmail.com" method="post">
+            <form action="https://formspree.io/mpigsley@gmail.com" method="post">
               <div className="row">
                 <div className="six columns">
                   <label htmlFor="name">Name</label>
@@ -67,7 +67,7 @@ export default function Services() {
                   <textarea className="u-full-width" name="comments" />
                 </div>
               </div>
-              <input type="hidden" name="_next" value="http://mitchelpigsley.com/" />
+              <input type="hidden" name="_next" value="https://mitchelpigsley.com/" />
               <input type="hidden" name="_subject" value="Web Enquiry" />
               <input className="button-primary Primary-Submit" type="submit" value="Submit" />
               <input type="reset" value="Reset" />
@@ -85,7 +85,7 @@ export default function Services() {
             <p>
                 All financial transactions go through PayPal and I require 25% of the total payment before I start work. We can talk about pricing once the below form is filled out and sent.
             </p>
-            <form action="http://formspree.io/logicalmitch@gmail.com" method="post">
+            <form action="https://formspree.io/logicalmitch@gmail.com" method="post">
               <div className="row">
                 <div className="six columns">
                   <label htmlFor="name">Name</label>
@@ -130,7 +130,7 @@ export default function Services() {
                   <textarea className="u-full-width" name="comments" />
                 </div>
               </div>
-              <input type="hidden" name="_next" value="http://mitchelpigsley.com/" />
+              <input type="hidden" name="_next" value="https://mitchelpigsley.com/" />
               <input type="hidden" name="_subject" value="Mixing/Mastering Enquiry" />
               <input className="button-primary Primary-Submit" type="submit" value="Submit" disabled />
               <input type="reset" value="Reset" />
