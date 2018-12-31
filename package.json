@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.5",
+    "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
-    "normalize.css": "^6.0.0",
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "jquery": "^3.3.1",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-fontawesome": "^1.6.1",
-    "react-router-dom": "^4.1.1",
+    "react-router-dom": "^4.3.1",
     "skeleton.css": "^2.0.4"
   },
   "devDependencies": {
-    "firebase-tools": "^3.9.1",
+    "firebase-tools": "^6.2.2",
     "react-scripts": "^1.0.8"
   },
   "scripts": {
