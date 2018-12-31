@@ -129,9 +129,6 @@ export default class Home extends Component {
                 <LinkDialog href="https://besweetomaha.com/" linkText="Be Sweet Bakery">
                   Be Sweet Bakery in Omaha Nebraska serving custom cheesecakes, cupcakes, cookies, and much more.
                 </LinkDialog>
-                <LinkDialog href="http://www.tudorarms.org/" linkText="Tudor Arms">
-                  Historic condo style apartment complex site with forum, questions & answers, and blog.
-                </LinkDialog>
               </Article>
             </div>
             <FadingRow topMargin />
