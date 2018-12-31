@@ -7,7 +7,6 @@ import {
 
 import Home from './components/home';
 import Services from './components/services';
-import registerServiceWorker from './registerServiceWorker';
 
 import 'normalize.css/normalize.css';
 import 'skeleton.css/skeleton.css';
@@ -23,5 +22,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
-
-registerServiceWorker();
