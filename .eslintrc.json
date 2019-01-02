@@ -1,0 +1,9 @@
+{
+  "parser": "typescript-eslint-parser",
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["react", "jsx-a11y", "import", "prettier"],
+  "env": {
+    "browser": true,
+    "jest": true
+  }
+} 
