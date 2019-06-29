@@ -112,8 +112,6 @@ export default ({ data }) => {
     return () => scrollerRef.current.removeEventListener('scroll', onScroll);
   }, [scrollerRef.current, contentRef.current]);
 
-  console.log(opacity);
-
   return (
     <SiteWrapper ref={scrollerRef}>
       <Global
