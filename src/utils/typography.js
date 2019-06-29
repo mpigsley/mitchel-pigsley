@@ -2,15 +2,18 @@ import Typography from 'typography';
 
 import { COLORS } from './styles';
 
+const HEADER_FONT = 'Palanquin Dark';
+const BODY_FONT = 'Lora';
+
 const typography = new Typography({
   bodyWeight: '400',
   bodyColor: COLORS.textSecondary,
   headerColor: COLORS.text,
-  headerFontFamily: ['DM Serif Display', 'serif'],
-  bodyFontFamily: ['Lora', 'Georgia', 'serif'],
+  headerFontFamily: [HEADER_FONT, 'sans-serif'],
+  bodyFontFamily: [BODY_FONT, 'Georgia', 'serif'],
   googleFonts: [
-    { name: 'DM Serif Display', styles: ['400'] },
-    { name: 'Lora', styles: ['400', '700'] },
+    { name: HEADER_FONT, styles: ['700'] },
+    { name: BODY_FONT, styles: ['400', '700'] },
   ],
 });
 

@@ -6,33 +6,49 @@ import { Global, css } from '@emotion/core';
 
 import FlexContainer from '../components/flex-container';
 import { variableSize, COLORS } from '../utils/styles';
+import { useDevice } from '../utils/effects';
 import Layout from '../components/layout';
 
-const HEADER_HEIGHT = variableSize(0, 330);
-const BODY_PADDING = '3rem';
+const HEADER_HEIGHT = variableSize(0, 310);
+const BODY_PADDING_LARGE = '3rem';
 const STATIC_PADDING = '1rem';
 
-const SiteWrapper = styled.div`
-  height: calc(100vh - 3rem);
-  overflow-y: auto;
-  padding: ${BODY_PADDING} ${BODY_PADDING} 0;
-`;
+const SiteWrapper = styled.div(props => {
+  const bodyPadding = props.isMobile ? 0 : BODY_PADDING_LARGE;
+  return `
+    height: ${props.isMobile ? 'initial' : 'calc(100vh - 3rem)'};
+    overflow-y: auto;
+    padding: ${bodyPadding} ${bodyPadding} 0;
+  `;
+});
 
-const StaticContainer = styled(FlexContainer)`
-  height: ${HEADER_HEIGHT};
-  left: calc(${BODY_PADDING} + ${STATIC_PADDING});
-  position: fixed;
-  right: calc(${BODY_PADDING} + ${STATIC_PADDING});
-  top: ${BODY_PADDING};
-  z-index: -1;
+const StaticContainer = styled(FlexContainer)(props => {
+  const bodyPadding = props.isMobile ? 0 : BODY_PADDING_LARGE;
+  return `
+    display: ${props.isMobile ? 'none' : 'flex'};
+    height: ${HEADER_HEIGHT};
+    left: calc(
+      ${bodyPadding} +
+        ${STATIC_PADDING}
+    );
+    position: fixed;
+    right: calc(${bodyPadding} + ${STATIC_PADDING});
+    top: ${bodyPadding};
+    z-index: -1;
+`;
+});
+
+const MobileContainer = styled(FlexContainer)`
+  background-color: ${COLORS.backgroundDark};
+  display: ${props => (props.isMobile ? 'flex' : 'none')};
+  padding: 3rem 1.5rem;
 `;
 
 const NameHeader = styled.h1`
   display: inline-block;
   flex: 0;
-  font-size: ${variableSize(0, 55)};
-  letter-spacing: 5.5px;
-  margin: 1rem 0 0;
+  font-size: ${variableSize(10, 60)};
+  margin: 0;
   padding: 0 1rem;
   position: relative;
   z-index: 1;
@@ -41,7 +57,7 @@ const NameHeader = styled.h1`
     background-color: ${COLORS.highlight};
     bottom: -12px;
     content: ' ';
-    height: 35px;
+    height: ${variableSize(20, 35)};
     left: 0;
     position: absolute;
     right: 0;
@@ -52,11 +68,11 @@ const NameHeader = styled.h1`
 const PositionHeader = styled.h3`
   color: ${COLORS.textSecondary};
   display: inline-block;
-  font-size: ${variableSize(1, 14.5)};
+  font-size: ${variableSize(12, 15)};
   font-weight: 100;
-  letter-spacing: 2px;
   margin: 0;
   padding: 0 1rem;
+  text-align: center;
   text-transform: uppercase;
 `;
 
@@ -64,6 +80,12 @@ const HorizontalRow = styled.hr`
   border-top: 1px solid ${COLORS.textSecondary};
   flex: 1;
   margin: 0;
+`;
+
+const MobileImageContainer = styled.div`
+  position: relative;
+  height: 25vw;
+  width: 50vw;
 `;
 
 const ImageContainer = styled.div`
@@ -74,13 +96,14 @@ const ImageContainer = styled.div`
 
 const ContentContainer = styled.div`
   background-color: ${COLORS.background};
-  margin-top: ${HEADER_HEIGHT};
-  padding: 3rem ${variableSize(-30, 80)};
+  margin-top: ${props => (props.isMobile ? 0 : HEADER_HEIGHT)};
+  padding: ${props => (props.isMobile ? 'calc(25vw + 3rem)' : '3rem')}
+    ${variableSize(-30, 80)} 3rem;
   width: 100%;
 `;
 
 const VerticalSection = styled(FlexContainer)`
-  margin: 0 1.5rem;
+  margin: 0 ${props => (props.isMobile ? '0 2rem' : '1.5rem')};
 
   &:first-of-type {
     margin-left: 0;
@@ -92,10 +115,10 @@ const VerticalSection = styled(FlexContainer)`
 `;
 
 export default ({ data }) => {
+  const { isMobile } = useDevice();
   const scrollerRef = useRef();
   const contentRef = useRef();
   const [opacity, setOpacity] = useState(1);
-
   useEffect(() => {
     if (!scrollerRef.current || !contentRef.current) {
       return () => {};
@@ -113,7 +136,7 @@ export default ({ data }) => {
   }, [scrollerRef.current, contentRef.current]);
 
   return (
-    <SiteWrapper ref={scrollerRef}>
+    <SiteWrapper ref={scrollerRef} isMobile={isMobile}>
       <Global
         styles={css`
           body {
@@ -126,32 +149,53 @@ export default ({ data }) => {
           }
         `}
       />
-      <StaticContainer align="flex-end">
+      <StaticContainer align="flex-end" isMobile={isMobile}>
         <Layout
           css={css`
             opacity: ${opacity};
           `}
         >
           <FlexContainer align="center" justify="space-between">
-            <div>
-              <FlexContainer align="center">
-                <PositionHeader>
-                  Full-Stack Developer & Freelancer
-                </PositionHeader>
-                <HorizontalRow />
-              </FlexContainer>
-              <NameHeader>Mitchel Pigsley</NameHeader>
-            </div>
+            {
+              <div>
+                <FlexContainer align="center">
+                  <PositionHeader>
+                    Full-Stack Developer & Freelancer
+                  </PositionHeader>
+                  <HorizontalRow />
+                </FlexContainer>
+                <NameHeader>Mitchel Pigsley</NameHeader>
+              </div>
+            }
             <ImageContainer>
               <Img fluid={data.mitch.childImageSharp.fluid} />
             </ImageContainer>
           </FlexContainer>
         </Layout>
       </StaticContainer>
+      <MobileContainer direction="column" align="center" isMobile={isMobile}>
+        <PositionHeader>Full-Stack Developer & Freelancer</PositionHeader>
+        <div>
+          <NameHeader>Mitchel Pigsley</NameHeader>
+        </div>
+        <MobileImageContainer>
+          <Img
+            css={css`
+              background-color: ${COLORS.background};
+              border: 20px solid ${COLORS.backgroundDark};
+              border-radius: 50%;
+              margin-top: 3rem;
+              height: 50vw;
+              width: 50vw;
+            `}
+            fluid={data.mitch.childImageSharp.fluid}
+          />
+        </MobileImageContainer>
+      </MobileContainer>
       <Layout>
-        <ContentContainer ref={contentRef}>
-          <FlexContainer>
-            <VerticalSection direction="column" flex="2">
+        <ContentContainer ref={contentRef} isMobile={isMobile}>
+          <FlexContainer direction={isMobile ? 'column' : 'row'}>
+            <VerticalSection direction="column" flex="2" isMobile={isMobile}>
               <h3>ABOUT</h3>
               <p>
                 I spend my days as a lead developer for a senior living
@@ -171,7 +215,7 @@ export default ({ data }) => {
                 and technology can enhance and bring cohesion to their vision.
               </p>
             </VerticalSection>
-            <VerticalSection direction="column" flex="1">
+            <VerticalSection direction="column" flex="1" isMobile={isMobile}>
               <h3>TECHNOLOGY</h3>
               <p>
                 Node.js | Express.js | React | Redux | Reflux | Webpack |
@@ -190,7 +234,7 @@ export const query = graphql`
   query {
     mitch: file(relativePath: { eq: "mitch.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
+        fluid(maxWidth: 500) {
           ...GatsbyImageSharpFluid
         }
       }

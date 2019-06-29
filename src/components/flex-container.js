@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export default styled('div', {
-  shouldForwardProp: () => true,
+  shouldForwardProp: props => props === 'children',
 })`
   display: flex;
   ${props => (props.direction ? `flex-direction: ${props.direction};` : '')}
