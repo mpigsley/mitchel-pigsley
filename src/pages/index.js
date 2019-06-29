@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { Global, css } from '@emotion/core';
 
 import FlexContainer from '../components/flex-container';
+import { variableSize, COLORS } from '../utils/styles';
 import Layout from '../components/layout';
 
 const StaticContainer = styled(FlexContainer)`
@@ -15,15 +16,15 @@ const StaticContainer = styled(FlexContainer)`
 const NameHeader = styled.h1`
   display: inline-block;
   flex: 0;
-  font-size: 4.8rem;
+  font-size: ${variableSize(0, 55)};
   letter-spacing: 5.5px;
-  margin: 0;
+  margin: 1rem 0 0;
   padding: 0 1rem;
   position: relative;
   z-index: 1;
 
   &:after {
-    background-color: #2b324e;
+    background-color: ${COLORS.highlight};
     bottom: -12px;
     content: ' ';
     height: 35px;
@@ -35,25 +36,26 @@ const NameHeader = styled.h1`
 `;
 
 const PositionHeader = styled.h3`
-  color: #7d7a7a;
+  color: ${COLORS.textSecondary};
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: ${variableSize(1, 14.5)};
   font-weight: 100;
   letter-spacing: 2px;
-  margin: 0 0 1rem;
+  margin: 0;
   padding: 0 1rem;
   text-transform: uppercase;
 `;
 
 const HorizontalRow = styled.hr`
-  border-top: 1px solid #7d7a7a;
+  border-top: 1px solid ${COLORS.textSecondary};
   flex: 1;
   margin: 0;
 `;
 
 const ImageContainer = styled.div`
-  max-width: 600px;
-  width: 35vw;
+  margin-right: ${variableSize(0, 10)};
+  max-width: 500px;
+  width: 32vw;
 `;
 
 export default ({ data }) => (
@@ -61,7 +63,11 @@ export default ({ data }) => (
     <Global
       styles={css`
         body {
-          background-image: linear-gradient(145deg, #131313, black);
+          background-image: linear-gradient(
+            145deg,
+            ${COLORS.backgroundLight},
+            ${COLORS.backgroundDark}
+          );
           min-height: 100vh;
           padding: 3rem;
         }

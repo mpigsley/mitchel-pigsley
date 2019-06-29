@@ -1,9 +1,11 @@
 import Typography from 'typography';
 
+import { COLORS } from './styles';
+
 const typography = new Typography({
   bodyWeight: '400',
-  bodyColor: '#7D7A7A',
-  headerColor: '#B7B7B7',
+  bodyColor: COLORS.textSecondary,
+  headerColor: COLORS.text,
   headerFontFamily: ['DM Serif Display', 'serif'],
   bodyFontFamily: ['Lora', 'Georgia', 'serif'],
   googleFonts: [
