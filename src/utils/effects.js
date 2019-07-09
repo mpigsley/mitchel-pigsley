@@ -38,3 +38,13 @@ export const useDevice = () => {
   const isDesktop = !isMobile;
   return { isMobile, isDesktop };
 };
+
+export const useScroll = (scrollRef, cb, additionalWatch = []) =>
+  useEffect(() => {
+    if (!scrollRef.current) {
+      return () => {};
+    }
+
+    scrollRef.current.addEventListener('scroll', cb);
+    return () => scrollRef.current.removeEventListener('scroll', cb);
+  }, [scrollRef.current, ...additionalWatch]);
