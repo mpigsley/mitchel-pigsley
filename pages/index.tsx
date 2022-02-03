@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 import AppWrapper from "components/app-wrapper";
 
-import Me from "public/mitch.png";
+// @ts-ignore
+import Me from "public/images/mitch.png";
+
+console.log(Me);
 
 const randomInterval = () => Math.round(Math.random() * 120 + 50);
 const TAG = " Mitchel Pigsley ";
@@ -22,13 +24,7 @@ export default function Home() {
   return (
     <AppWrapper>
       <div className="container">
-        <Image
-          src={Me}
-          alt="Mitchel Pigsley"
-          width="150"
-          height="150"
-          placeholder="blur"
-        />
+        <img src={Me} alt="Mitchel Pigsley" className="img" />
         <div className="stage">{TAG.slice(0, index)}</div>
       </div>
       <style jsx>{`
@@ -39,6 +35,11 @@ export default function Home() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+        }
+
+        .img {
+          height: 150px;
+          width: 150px;
         }
 
         .stage {
